@@ -1,7 +1,7 @@
 class Movie < ActiveRecord::Base
 
     def self.create_with_title(title)
-        self.create(:title => title)
+       self.create(title: title)
     end
 
     def self.first_movie
@@ -33,7 +33,15 @@ class Movie < ActiveRecord::Base
     end
 
     def self.update_all_titles(title)
-        self.where('title').update_all(title: title)
+        self.update_all(title: title)
+    end
+
+    def self.delete_by_id(id)
+        self.destroy(id)
+    end
+
+    def self.delete_all_movies
+        self.destroy_all
     end
 
 end
